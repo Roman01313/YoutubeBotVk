@@ -15,5 +15,7 @@ vk = vk_session.get_api()
 for event in longpoll.listen():
     if event.type == VkEventType.MESSAGE_NEW and event.text and event.to_me:
         if event.from_user:
-            link = VideosSearch(event.text, limit=1).result()['result'][0]['link']
-            vk.messages.send(user_id=event.user_id, message=f'Найдено по вашему запросу :{link}', random_id=randrange(1,10000))
+            link = VideosSearch(event.text, limit=3)
+            for i in range(len(link.result()['result'])):
+                vid = link.result()['result'][i]['link']
+                vk.messages.send(user_id=event.user_id, message=f'Найдено по вашему запросу :{vid}', random_id=randrange(1,10000))
