@@ -1,9 +1,12 @@
+from itertools import count
+
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 from random import randrange
 from youtubesearchpython import *
 from dotenv import load_dotenv
 import os
+from TikTokAPI import TikTokAPI
 
 load_dotenv()
 
